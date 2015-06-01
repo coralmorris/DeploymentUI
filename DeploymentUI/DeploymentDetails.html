@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{{activeAssetAirDeployment.assetAirDeploymentId == '0' ? "Edit assetAirDeployment" : "Create assetAirDeployment"}}</title>
+    <link id="bootstrap-include" rel="stylesheet" href="../CoreUI/vendor/bootstrap-3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../CoreUI/vendor/jquery-loadmask-0.4/jquery.loadmask.css" />
+    <link rel="stylesheet" href="../CoreUI/vendor/select-0.5.2/css/select-theme-default.css">
+    <link rel="stylesheet" href="../CoreUI/vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../CoreUI/vendor/angular-bootstrap-datetimepicker-0.3.8/css/datetimepicker.css" />
+    <link rel="stylesheet" href="../CoreUI/vendor/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link href="../CoreUI/vendor-overlay/bootstrap/css/custom.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src='../../../CoreUI/js/owf/5/owf-widget-min.js'></script>
+</head>
+<body data-ng-controller="DetailsController">
+    <div id="assetAirDeploymentDetails" class="container-fluid">
+        <div class="row">
+            <div data-classification-banner-3 data-classification="activeAssetAirDeployment.classification" data-picker-header="AssetAirDeployment {{activeAssetAirDeployment.assetAirDeploymentId}}"></div>
+        </div>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header navbar-left">
+                <a class="btn btn-primary" data-ng-click="saveForm()">
+                    <i title="Save" class="fa fa-save fa-lg"></i>
+                </a>
+                <a class="btn btn-primary" data-ng-click="resetForm()">
+                    <i title="Reset" class="fa fa-refresh fa-lg"></i>
+                </a>
+                <a class="btn btn-primary" data-ng-click="createNew()">
+                    <i title="Create New" class="fa fa-plus-square fa-lg"></i>
+                </a>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="span2" style="text-align:center">
+                <p class="lead">Asset Air Deployment Id: {{activeAssetAirDeployment.assetAirDeploymentId ? activeAssetAirDeployment.assetAirDeploymentId : "New Case"}}</p>
+            </div>
+        </div>
+        <form name="assetAirDeploymentForm" class="form-horizontal" data-role="form" data-ng-submit="submitForm(assetAirDeploymentForm.$valid)" novalidate>
+            <odin-mandatory>
+                <div class="col-lg-12">
+                    <odin-date-select data-date-field="deploymentDateFrom"
+                                      data-date-label="Deployment Start"
+                                      data-model="activeAssetAirDeployment.deploymentDateFrom"></odin-date-select>
+                    <odin-date-select data-date-field="deploymentDateTo"
+                                      data-date-label="Deployment End"
+                                      data-model="activeAssetAirDeployment.deploymentDateTo"></odin-date-select>
+                    <odin-select-mandatory data-select-field="opBaseType"
+                                           data-select-label="Base Type"
+                                           data-model="activeAssetAirDeployment.opBaseType"
+                                           data-options="baseTypes"></odin-select-mandatory>
+                    <odin-select-mandatory data-select-field="icaoCode"
+                                           data-select-label="Op Base"
+                                           data-model="activeAssetAirDeployment.icaoCode"
+                                           data-options="icaoCodes"></odin-select-mandatory>
+                    <odin-select-mandatory data-select-field="defaultTacon"
+                                           data-select-label="TACON"
+                                           data-select-model="activeAssetAirDeployment.defaultTacon"
+                                           data-options="tacons"></odin-select-mandatory>
+                </div>
+            </odin-mandatory>
+            <odin-optional>
+                <div class="col-lg-12">
+                    <odin-text-input data-input-field="callSign"
+                                     data-input-label="Call Sign"
+                                     data-model="activeAssetAirDeployment.callSign"></odin-text-input>
+                    <odin-text-input data-input-field="apacsNumber"
+                                     data-input-label="APACS Id"
+                                     data-model="activeAssetAirDeployment.apacsNumber"></odin-text-input>
+                    <odin-text-input data-input-field="clearanceNumber"
+                                     data-input-label="Clearance #"
+                                     data-model="activeAssetAirDeployment.clearanceNumber"></odin-text-input>
+                    <odin-text-input data-input-field="airCrew"
+                                     data-input-label="Air Crew"
+                                     data-model="activeAssetAirDeployment.airCrew"></odin-text-input>
+                    <odin-text-input data-input-field="maintenanceCrew"
+                                     data-input-label="Maintenance Crew"
+                                     data-model="activeAssetAirDeployment.maintenanceCrew"></odin-text-input>
+                    <div data-remarks-directive data-remarks="activeAssetAirDeployment.comments" data-remarks-title="AssetAirDeployment Comments" data-remark-type="COMMENTS"></div>
+                </div>
+            </odin-optional>
+        </form>
+        <div class="row">
+            <div data-classification-banner-3 data-classification="activeAssetAirDeployment.classification" data-picker-header="AssetAirDeployment {{activeAssetAirDeployment.asseAirDeploymentId}}"></div>
+        </div>
+    </div>
+    <script src="../CoreUI/vendor/require-2.1.16/require.js" data-main="js/main.js"></script>
+</body>
+</html>
+

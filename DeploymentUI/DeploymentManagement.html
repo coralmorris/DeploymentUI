@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<!--[if IE 8]><html class="ie8" xmlns:ng="http://angularjs.org" id="ng-app" ng-app='abd'><![endif]-->
+<!--[if IE 9]><html class="ie9" xmlns:ng="http://angularjs.org" id="ng-app" ng-app='abd'><![endif]-->
+<!--[if gt IE 9]><html class="" xmlns:ng="http://angularjs.org" id="ng-app" ng-app='abd'><![endif]-->
+<!-- [if !IE]> -->
+<html lang="en">
+<!--<[endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Asset Air Deployment Management</title>
+    <link id="bootstrap-include" rel="stylesheet" href="../CoreUI/vendor/bootstrap-3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../CoreUI/vendor/jquery-loadmask-0.4/jquery.loadmask.css" />
+    <link rel="stylesheet" href="../CoreUI/vendor/select-0.5.2/css/select-theme-default.css">
+    <link rel="stylesheet" href="../CoreUI/vendor/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="../CoreUI/vendor/angular-bootstrap-datetimepicker-0.3.8/css/datetimepicker.css" />
+    <link rel="stylesheet" href="../CoreUI/vendor/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link href="../CoreUI/vendor-overlay/bootstrap/css/custom.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src='../../../CoreUI/js/owf/5/owf-widget-min.js'></script>
+</head>
+<body data-ng-controller="ManagementController">
+    <div id="caseManagement" class="container">
+        <ngform name="caseForm" data-role="form" data-ng-submit="submitForm(caseForm.$valid)" novalidate>
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header navbar-left" style="padding-top: 5px; padding-left: 10px;">
+                        <a class="btn btn-primary" data-ng-click="showSearch()" data-ng-enabled="caseForm.reportingAgency.$valid || caseForm.caseType.$valid">
+                            <i title="Search" class="fa fa-search fa-lg"></i>
+                        </a>
+                        <a class="btn btn-primary" data-ng-click="createNew()">
+                            <i title="Create New" class="fa fa-plus-square fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+            <div class="row">
+                <table data-tr-ng-grid="" data-items="targetResults" data-page-items="8" data-selected-items="selected" data-selection-mode="SingleRow">
+                    <thead>
+                        <tr>
+                            <th field-name="classification" data-display-name="Classification" data-enable-filtering="false">Classification</th>
+                            <th field-name="assetAirDeploymentId" data-display-name="Asset Air Deployment Id" data-enable-filtering="false">Asset Air Deployment Id</th>
+                            <th field-name="assetAirId" data-display-name="Asset Air Id" data-enable-filtering="false">Asset Air Id</th>
+                            <th field-name="callSign" data-display-name="Call Sign" data-enable-filtering="false">Call Sign</th>
+                            <th field-name="opBaseId" data-display-name="Op Base Id" data-enable-filtering="false">Op Base Id</th>
+                            <th field-name="opBaseShortDesc" data-display-name="Op Base Short Desc" data-enable-filtering="false">Op Base Short Desc</th>
+                            <th field-name="opBaseTypeId" data-display-name="Op Base Type Id" data-enable-filtering="false">Op Base Type Id</th>
+                            <th field-name="opBaseTypeShortDesc" data-display-name="Op Base Type Short Desc" data-enable-filtering="false">Op Base Type Short Desc</th>
+                            <th field-name="icaoCodeId" data-display-name="Icao Code Id" data-enable-filtering="false">Icao Code Id</th>
+                            <th field-name="icaoCodeShortDesc" data-display-name="Icao Code Short Desc" data-enable-filtering="false">Icao Code Short Desc</th>
+                            <th field-name="deploymentDateFrom" data-display-name="Deployment Date From" data-enable-filtering="false">Deployment Date From</th>
+                            <th field-name="deploymentDateTo" data-display-name="Deployment Date To" data-enable-filtering="false">Deployment Date To</th>
+                            <th field-name="dataModifiedts" data-display-name="Data Modified ts" data-enable-filtering="false">Data Modified ts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-ng-class="cellClass(gridItem)">
+                                <a class="btn btn-primary btn-xs" data-ng-click="openNewWindow(gridItem)">
+                                    <i title="Open New Window" class="fa fa-files-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </ngform>
+    </div>
+    <script src="../CoreUI/vendor/require-2.1.16/require.js" data-main="js/main.js"></script>
+</body>
+</html>
+
